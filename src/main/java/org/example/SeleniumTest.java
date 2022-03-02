@@ -8,9 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
 
-public class Main {
+public class SeleniumTest {
 
     public static void main(String[] args) {
 
@@ -18,14 +17,13 @@ public class Main {
 
         WebDriver driver  = chromeDriver();
 
-        driver.get("http://google.com");
+        driver.get("https://www.selenium.dev/");
 
-        WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.click();
-        searchBox.sendKeys("Selenium testing ");
-        searchBox.sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//*[@id=\"main_navbar\"]/ul/li[7]/a/span")).click();
 
-        driver.findElement(By.xpath("//*[@id=\"rso\"]/div[3]/div/div/div[1]/a/h3")).click();
+        driver.findElement(By.xpath("//*[@id=\"m-blog2016\"]/span")).click();
+
+        driver.findElement(By.xpath("/html/body/div/div[1]/div/main/div[1]/div/ul/li[4]/div/h5/a")).click();
 
 
 
