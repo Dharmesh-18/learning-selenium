@@ -2,7 +2,6 @@ package org.example;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,13 +16,16 @@ public class SeleniumTest {
 
         WebDriver driver  = chromeDriver();
 
-        driver.get("https://www.selenium.dev/");
+        driver.get("https://selenium.dev");
 
-        driver.findElement(By.xpath("//*[@id=\"main_navbar\"]/ul/li[7]/a/span")).click();
+        WebElement blog = driver.findElement(By.linkText("Blog"));
+        blog.click();
 
-        driver.findElement(By.xpath("//*[@id=\"m-blog2016\"]/span")).click();
+        WebElement link2016 = driver.findElement(By.id("m-blog2016"));
+        link2016.click();
 
-        driver.findElement(By.xpath("/html/body/div/div[1]/div/main/div[1]/div/ul/li[4]/div/h5/a")).click();
+        WebElement element = driver.findElement(By.linkText("Fall Selenium Conf, Save the Date & Call for Speakers!"));
+        element.click();
 
 
 
