@@ -1,3 +1,5 @@
+package org.example;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -7,12 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.assertTrue;
-
-public class RadioButtonTest {
+public class TablePageTest {
 
     private WebDriver driver;
 
@@ -24,7 +25,9 @@ public class RadioButtonTest {
     @Before
     public void setup() {
         driver = new ChromeDriver();
-        driver.get("http://localhost:8082/radioButton.html");
+        driver.get("http://localhost:8082");
+        WebElement tableLink = driver.findElement(By.id("tableLink"));
+        tableLink.click();
     }
 
     @After
@@ -32,12 +35,11 @@ public class RadioButtonTest {
         driver.quit();
     }
 
-    @Test
-    public void test_radioButton_Blue(){
-        List<WebElement> color = driver.findElements(By.name("color"));
-        color.get(2).click();
-        assertTrue(color.get(2).isSelected());
-    }
 
+    @Test
+    public void test_table() {
+        WebElement element = driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[1]/td"));
+        assertEquals("Table 2 Row 1", element.getText());
+    }
 
 }
